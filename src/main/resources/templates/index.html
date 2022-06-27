@@ -1,0 +1,44 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Пользователи</title>
+
+
+</head>
+
+<body>
+<h1>ФИО пользователей:</h1>
+<form id="add-form" th:action="@{/}" th:object="${user}" th:method="post">
+    <div class="row">
+        <label>Фио:</label>
+        <input type="text" th:field="*{fName}"></input>
+        <input type="text" th:field="*{lName}"></input>
+        <input type="text" th:field="*{mName}"></input>
+        <button id="add" type="submit">Добавить</button>
+    </div>
+
+</form>
+
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Фамилия</th>
+        <th>Имя</th>
+        <th>Отчество</th>
+    </tr>
+    </thead>
+    <tbody th:each="User, iStat : ${users}">
+    <td th:text="${iStat.index}+1"></td>
+    <td th:text="${User.fName}"></td>
+    <td th:text="${User.lName}"></td>
+    <td th:text="${User.mName}"></td>
+    </tr>
+    </tbody>
+</table>
+<br/>
+<br/>
+
+
+</body>
+</html>
